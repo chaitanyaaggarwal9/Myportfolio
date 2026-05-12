@@ -1,0 +1,173 @@
+<section id="thinking" class="section bg-ink">
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:700px;margin:0 auto 4rem;">
+      <div class="section-label" style="justify-content:center;color:rgba(255,255,255,0.4);">PM Judgment</div>
+      <h2 style="color:var(--white);">How I think<br><em style="color:var(--red);">when it's hard.</em></h2>
+      <div class="red-rule" style="margin:1.5rem auto;"></div>
+      <p style="color:rgba(255,255,255,0.5);">Real PM scenarios I've faced. Click to see how I handled them.</p>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:4rem;">
+      <div class="scenario-card reveal" data-aos-delay="100"
+           style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:2rem;cursor:pointer;transition:all 0.3s;"
+           onclick="toggleScenario(this)">
+        <div style="font-size:0.7rem;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1rem;">Scenario 01</div>
+        <p style="color:var(--white);font-size:1rem;font-weight:500;line-height:1.5;margin-bottom:1.5rem;">"Engineer says 3 months. CEO wants it in 4 weeks. What do you do?"</p>
+        <div class="scenario-answer" style="display:none;border-top:1px solid rgba(255,255,255,0.08);padding-top:1.25rem;">
+          <p style="color:rgba(255,255,255,0.6);font-size:0.875rem;line-height:1.7;">I run a scope triage immediately — what's the 20% that delivers 80% of value? I work with the engineer to define a shippable MVP that meets the CEO's intent, not just their deadline. Then I align both sides on the new definition of done. Time pressure is a prioritization tool, not an enemy.</p>
+        </div>
+        <div style="font-size:0.8rem;color:var(--red);margin-top:1rem;">Click to see my answer →</div>
+      </div>
+
+      <div class="scenario-card reveal" data-aos-delay="250"
+           style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:2rem;cursor:pointer;transition:all 0.3s;"
+           onclick="toggleScenario(this)">
+        <div style="font-size:0.7rem;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1rem;">Scenario 02</div>
+        <p style="color:var(--white);font-size:1rem;font-weight:500;line-height:1.5;margin-bottom:1.5rem;">"CEO wants a feature. Users don't. What do you do?"</p>
+        <div class="scenario-answer" style="display:none;border-top:1px solid rgba(255,255,255,0.08);padding-top:1.25rem;">
+          <p style="color:rgba(255,255,255,0.6);font-size:0.875rem;line-height:1.7;">I bring data, not opinions. User research, session recordings, conversion metrics — I make the user's voice undeniable. Then I find the underlying business goal the CEO is trying to achieve and propose an alternative that serves both. The CEO is solving a problem too — I just need to understand which one.</p>
+        </div>
+        <div style="font-size:0.8rem;color:var(--red);margin-top:1rem;">Click to see my answer →</div>
+      </div>
+
+      <div class="scenario-card reveal" data-aos-delay="400"
+           style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:2rem;cursor:pointer;transition:all 0.3s;"
+           onclick="toggleScenario(this)">
+        <div style="font-size:0.7rem;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1rem;">Scenario 03</div>
+        <p style="color:var(--white);font-size:1rem;font-weight:500;line-height:1.5;margin-bottom:1.5rem;">"User says X. Data says Y. Which do you trust?"</p>
+        <div class="scenario-answer" style="display:none;border-top:1px solid rgba(255,255,255,0.08);padding-top:1.25rem;">
+          <p style="color:rgba(255,255,255,0.6);font-size:0.875rem;line-height:1.7;">Neither alone. Users tell you what they feel; data tells you what they do. The truth is usually in the gap between them. I interview to understand the "why" behind the data anomaly — then I design around the root cause, not the symptom. At Savax, users said onboarding was "fine." Data said 30% dropped off. We fixed the real problem.</p>
+        </div>
+        <div style="font-size:0.8rem;color:var(--red);margin-top:1rem;">Click to see my answer →</div>
+      </div>
+    </div>
+
+    <!-- What I believe -->
+    <div class="reveal" style="border-top:1px solid rgba(255,255,255,0.08);padding-top:3rem;text-align:center;">
+      <div class="section-label" style="justify-content:center;color:rgba(255,255,255,0.3);">What I believe</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2rem;max-width:900px;margin-left:auto;margin-right:auto;">
+        <div class="reveal" data-aos-delay="100">
+          <div style="font-size:1.5rem;margin-bottom:0.75rem;">"</div>
+          <p style="color:rgba(255,255,255,0.7);font-size:0.95rem;line-height:1.7;font-style:italic;">Metrics without empathy are just numbers. Users without data are just stories.</p>
+        </div>
+        <div class="reveal" data-aos-delay="250">
+          <div style="font-size:1.5rem;margin-bottom:0.75rem;color:var(--red);">"</div>
+          <p style="color:rgba(255,255,255,0.7);font-size:0.95rem;line-height:1.7;font-style:italic;">The best PRD is a conversation, not a document. Ship it to your team before you ship it to Confluence.</p>
+        </div>
+        <div class="reveal" data-aos-delay="400">
+          <div style="font-size:1.5rem;margin-bottom:0.75rem;">"</div>
+          <p style="color:rgba(255,255,255,0.7);font-size:0.95rem;line-height:1.7;font-style:italic;">The fastest way to know if something works is to ship it. Then fix what you learn.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="skills" class="section bg-cream-dark">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:3rem;">
+      <div class="section-label">Skills & Tools</div>
+      <h2>The PM arsenal.</h2>
+      <div class="red-rule"></div>
+    </div>
+
+    <div class="grid-4" style="margin-bottom:3rem;">
+      <div class="reveal" data-aos-delay="100">
+        <div style="font-size:0.75rem;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:0.15em;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:2px solid var(--red);">Strategy</div>
+        <div style="display:flex;flex-direction:column;gap:0.4rem;">
+          <span class="chip" style="justify-content:flex-start;">Product Vision & Roadmapping</span>
+          <span class="chip" style="justify-content:flex-start;">Market & Competitor Analysis</span>
+          <span class="chip" style="justify-content:flex-start;">Go-to-Market Strategy</span>
+          <span class="chip" style="justify-content:flex-start;">Business Case Development</span>
+          <span class="chip" style="justify-content:flex-start;">KPI & OKR Frameworks</span>
+        </div>
+      </div>
+      <div class="reveal" data-aos-delay="200">
+        <div style="font-size:0.75rem;font-weight:600;color:var(--ink);text-transform:uppercase;letter-spacing:0.15em;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:2px solid var(--ink);">Execution</div>
+        <div style="display:flex;flex-direction:column;gap:0.4rem;">
+          <span class="chip" style="justify-content:flex-start;">Agile / Scrum / SAFe</span>
+          <span class="chip" style="justify-content:flex-start;">Sprint Planning & Delivery</span>
+          <span class="chip" style="justify-content:flex-start;">Backlog Grooming</span>
+          <span class="chip" style="justify-content:flex-start;">Jira & Confluence</span>
+          <span class="chip" style="justify-content:flex-start;">Stakeholder Communication</span>
+        </div>
+      </div>
+      <div class="reveal" data-aos-delay="300">
+        <div style="font-size:0.75rem;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:0.15em;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:2px solid var(--red);">AI & Data</div>
+        <div style="display:flex;flex-direction:column;gap:0.4rem;">
+          <span class="chip" style="justify-content:flex-start;">LLM Evaluation & Prompting</span>
+          <span class="chip" style="justify-content:flex-start;">SQL for Product Insights</span>
+          <span class="chip" style="justify-content:flex-start;">Amplitude & Mixpanel</span>
+          <span class="chip" style="justify-content:flex-start;">Google Analytics</span>
+          <span class="chip" style="justify-content:flex-start;">Tableau / Power BI</span>
+        </div>
+      </div>
+      <div class="reveal" data-aos-delay="400">
+        <div style="font-size:0.75rem;font-weight:600;color:var(--ink);text-transform:uppercase;letter-spacing:0.15em;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:2px solid var(--ink);">Design & Build</div>
+        <div style="display:flex;flex-direction:column;gap:0.4rem;">
+          <span class="chip" style="justify-content:flex-start;">Figma & Wireframing</span>
+          <span class="chip" style="justify-content:flex-start;">User Interviews & Personas</span>
+          <span class="chip" style="justify-content:flex-start;">A/B Testing</span>
+          <span class="chip" style="justify-content:flex-start;">React + Firebase</span>
+          <span class="chip" style="justify-content:flex-start;">REST APIs & SaaS Integrations</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certifications -->
+    <div class="reveal">
+      <div class="section-label" style="margin-bottom:1.5rem;">Certifications</div>
+      <div class="grid-4">
+        <a href="https://drive.google.com/file/d/1YAOFXWSCwCaqxuquLP6Hp19-TX7ixvvV/view?usp=sharing" target="_blank" class="cert-card reveal" data-aos-delay="100"
+           style="background:var(--white);border:1px solid var(--cream-border);border-radius:6px;padding:1.25rem;display:flex;align-items:center;gap:0.75rem;text-decoration:none;transition:all 0.3s;">
+          <span style="font-size:1.5rem;flex-shrink:0;">🏅</span>
+          <div><div style="font-size:0.8rem;font-weight:600;color:var(--ink);line-height:1.3;">CSPO®</div><div style="font-size:0.7rem;color:var(--ink-muted);">Certified Scrum PO</div></div>
+          <span style="margin-left:auto;color:var(--red);font-size:0.75rem;">↗</span>
+        </a>
+        <a href="https://www.credly.com/badges/0b4ddcb3-d102-4323-91a3-7434bcc868e3/linked_in_profile" target="_blank" class="cert-card reveal" data-aos-delay="150"
+           style="background:var(--white);border:1px solid var(--cream-border);border-radius:6px;padding:1.25rem;display:flex;align-items:center;gap:0.75rem;text-decoration:none;transition:all 0.3s;">
+          <span style="font-size:1.5rem;flex-shrink:0;">🔵</span>
+          <div><div style="font-size:0.8rem;font-weight:600;color:var(--ink);line-height:1.3;">Google PM</div><div style="font-size:0.7rem;color:var(--ink-muted);">Project Management</div></div>
+          <span style="margin-left:auto;color:var(--red);font-size:0.75rem;">↗</span>
+        </a>
+        <a href="https://drive.google.com/file/d/1FjoiWwJ7DGaKh_axvnZpYU2CcPzuOZyx/view" target="_blank" class="cert-card reveal" data-aos-delay="200"
+           style="background:var(--white);border:1px solid var(--cream-border);border-radius:6px;padding:1.25rem;display:flex;align-items:center;gap:0.75rem;text-decoration:none;transition:all 0.3s;">
+          <span style="font-size:1.5rem;flex-shrink:0;">📣</span>
+          <div><div style="font-size:0.8rem;font-weight:600;color:var(--ink);line-height:1.3;">Product Marketing</div><div style="font-size:0.7rem;color:var(--ink-muted);">Bootcamp</div></div>
+          <span style="margin-left:auto;color:var(--red);font-size:0.75rem;">↗</span>
+        </a>
+        <a href="https://www.credly.com/badges/a4b21e6a-a1a0-4309-9f7e-013075b89fdd/linked_in_profile" target="_blank" class="cert-card reveal" data-aos-delay="250"
+           style="background:var(--white);border:1px solid var(--cream-border);border-radius:6px;padding:1.25rem;display:flex;align-items:center;gap:0.75rem;text-decoration:none;transition:all 0.3s;">
+          <span style="font-size:1.5rem;flex-shrink:0;">📊</span>
+          <div><div style="font-size:0.8rem;font-weight:600;color:var(--ink);line-height:1.3;">Google Analytics</div><div style="font-size:0.7rem;color:var(--ink-muted);">Data Analytics</div></div>
+          <span style="margin-left:auto;color:var(--red);font-size:0.75rem;">↗</span>
+        </a>
+        <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/TUP2FNSTJCH5" target="_blank" class="cert-card reveal" data-aos-delay="300"
+           style="background:var(--white);border:1px solid var(--cream-border);border-radius:6px;padding:1.25rem;display:flex;align-items:center;gap:0.75rem;text-decoration:none;transition:all 0.3s;">
+          <span style="font-size:1.5rem;flex-shrink:0;">⚙️</span>
+          <div><div style="font-size:0.8rem;font-weight:600;color:var(--ink);line-height:1.3;">Six Sigma</div><div style="font-size:0.7rem;color:var(--ink-muted);">Yellow Belt</div></div>
+          <span style="margin-left:auto;color:var(--red);font-size:0.75rem;">↗</span>
+        </a>
+        <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/AWNXCKNVW8KB" target="_blank" class="cert-card reveal" data-aos-delay="350"
+           style="background:var(--white);border:1px solid var(--cream-border);border-radius:6px;padding:1.25rem;display:flex;align-items:center;gap:0.75rem;text-decoration:none;transition:all 0.3s;">
+          <span style="font-size:1.5rem;flex-shrink:0;">🚚</span>
+          <div><div style="font-size:0.8rem;font-weight:600;color:var(--ink);line-height:1.3;">Supply Chain</div><div style="font-size:0.7rem;color:var(--ink-muted);">Management Spec.</div></div>
+          <span style="margin-left:auto;color:var(--red);font-size:0.75rem;">↗</span>
+        </a>
+        <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=1D2615696DB187E69EC91E42879371D969AD814468AC2F81DC459F0F3F3FF429" target="_blank" class="cert-card reveal" data-aos-delay="400"
+           style="background:var(--white);border:1px solid var(--cream-border);border-radius:6px;padding:1.25rem;display:flex;align-items:center;gap:0.75rem;text-decoration:none;transition:all 0.3s;">
+          <span style="font-size:1.5rem;flex-shrink:0;">🤖</span>
+          <div><div style="font-size:0.8rem;font-weight:600;color:var(--ink);line-height:1.3;">Oracle AI Vector</div><div style="font-size:0.7rem;color:var(--ink-muted);">Certified Professional</div></div>
+          <span style="margin-left:auto;color:var(--red);font-size:0.75rem;">↗</span>
+        </a>
+        <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=F52F5645951FA5911D1E1ACE06EB338DF9350C73B7FD854F22E1EF4B0F2B02BD" target="_blank" class="cert-card reveal" data-aos-delay="450"
+           style="background:var(--white);border:1px solid var(--cream-border);border-radius:6px;padding:1.25rem;display:flex;align-items:center;gap:0.75rem;text-decoration:none;transition:all 0.3s;">
+          <span style="font-size:1.5rem;flex-shrink:0;">☁️</span>
+          <div><div style="font-size:0.8rem;font-weight:600;color:var(--ink);line-height:1.3;">Oracle Fusion</div><div style="font-size:0.7rem;color:var(--ink-muted);">Cloud Applications</div></div>
+          <span style="margin-left:auto;color:var(--red);font-size:0.75rem;">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

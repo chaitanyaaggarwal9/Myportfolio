@@ -1,0 +1,146 @@
+<section id="chat" class="section bg-white">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;">
+
+      <div class="reveal">
+        <div class="section-label">Ask me anything</div>
+        <h2>My brain,<br><em style="color:var(--red);">on demand.</em></h2>
+        <div class="red-rule"></div>
+        <p style="margin-bottom:2rem;color:var(--ink-muted);">Recruiters ask the same 20 questions. I've answered them all — in my own voice. Try it.</p>
+
+        <div style="display:flex;flex-direction:column;gap:0.5rem;">
+          <div style="font-size:0.75rem;font-weight:600;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.25rem;">Suggested questions</div>
+          <div style="display:flex;flex-wrap:wrap;gap:0.4rem;" id="sug-chips">
+            <button onclick="askBot('What type of PM are you?')" class="chip" style="cursor:pointer;border:none;">What type of PM are you?</button>
+            <button onclick="askBot('What is your biggest product win?')" class="chip" style="cursor:pointer;border:none;">Biggest product win?</button>
+            <button onclick="askBot('How do you prioritize features?')" class="chip" style="cursor:pointer;border:none;">How do you prioritize?</button>
+            <button onclick="askBot('Are you open to work?')" class="chip" style="cursor:pointer;border:none;">Open to work?</button>
+            <button onclick="askBot('Tell me about Finwise')" class="chip" style="cursor:pointer;border:none;">Tell me about Finwise</button>
+            <button onclick="askBot('How do you work with engineers?')" class="chip" style="cursor:pointer;border:none;">With engineers?</button>
+            <button onclick="askBot('What is your AI experience?')" class="chip" style="cursor:pointer;border:none;">AI experience?</button>
+            <button onclick="askBot('What roles are you targeting?')" class="chip" style="cursor:pointer;border:none;">Target roles?</button>
+            <button onclick="askBot('How do you handle stakeholder conflict?')" class="chip" style="cursor:pointer;border:none;">Stakeholder conflict?</button>
+            <button onclick="askBot('What is your approach to user research?')" class="chip" style="cursor:pointer;border:none;">User research approach?</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal" data-aos-delay="200">
+        <div style="background:var(--cream);border:1px solid var(--cream-border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-md);">
+          <div style="background:var(--ink);padding:1rem 1.25rem;display:flex;align-items:center;gap:0.75rem;">
+            <div style="width:36px;height:36px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;color:#fff;font-size:0.9rem;flex-shrink:0;">CA</div>
+            <div>
+              <div style="font-size:0.85rem;font-weight:600;color:#fff;">Chaitanya Aggarwal</div>
+              <div style="font-size:0.7rem;color:rgba(255,255,255,0.4);display:flex;align-items:center;gap:0.3rem;"><span style="width:6px;height:6px;background:#22c55e;border-radius:50%;display:inline-block;"></span>Online · replies instantly</div>
+            </div>
+          </div>
+
+          <div id="chat-messages" style="padding:1.25rem;height:320px;overflow-y:auto;display:flex;flex-direction:column;gap:1rem;">
+            <div style="display:flex;gap:0.6rem;align-items:flex-start;">
+              <div style="width:28px;height:28px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;color:#fff;flex-shrink:0;">CA</div>
+              <div style="background:var(--white);border:1px solid var(--cream-border);border-radius:0 10px 10px 10px;padding:0.75rem 1rem;max-width:85%;">
+                <p style="font-size:0.875rem;color:var(--ink-soft);line-height:1.6;margin:0;">Hey! I'm Chaitanya. Ask me anything — about my work, how I think, or whether I'm the right PM for your team. 👋</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="padding:1rem;border-top:1px solid var(--cream-border);display:flex;gap:0.5rem;">
+            <input id="chat-input" type="text" placeholder="Ask me anything..."
+              style="flex:1;border:1px solid var(--cream-border);border-radius:6px;padding:0.6rem 0.9rem;font-size:0.875rem;font-family:var(--sans);background:var(--white);outline:none;transition:border-color 0.2s;cursor:auto;"
+              onfocus="this.style.borderColor='var(--red)'"
+              onblur="this.style.borderColor='var(--cream-border)'"
+              onkeydown="if(event.key==='Enter')sendChat()">
+            <button onclick="sendChat()"
+              style="background:var(--red);color:#fff;border:none;border-radius:6px;padding:0.6rem 1rem;font-size:0.875rem;font-weight:600;font-family:var(--sans);cursor:pointer;transition:background 0.2s;"
+              onmouseover="this.style.background='var(--red-dark)'"
+              onmouseout="this.style.background='var(--red)'">Send</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section bg-cream-dark">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
+
+      <div class="reveal">
+        <div class="section-label">Contact</div>
+        <h2>Let's build<br><em style="color:var(--red);">something great.</em></h2>
+        <div class="red-rule"></div>
+        <p style="margin-bottom:2.5rem;font-size:1.05rem;color:var(--ink-muted);">I'm actively looking for PM roles in AI + SaaS. If you're building something interesting — let's talk.</p>
+
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+          <a href="mailto:chaitanyaaggarwal9@gmail.com" style="display:flex;align-items:center;gap:1rem;padding:1.25rem;background:var(--white);border:1px solid var(--cream-border);border-radius:8px;text-decoration:none;transition:all 0.3s;group:"
+            onmouseover="this.style.borderColor='var(--red)';this.style.transform='translateX(4px)'"
+            onmouseout="this.style.borderColor='var(--cream-border)';this.style.transform='none'">
+            <span style="font-size:1.3rem;">📧</span>
+            <div><div style="font-size:0.75rem;font-weight:600;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.1em;">Email</div><div style="font-size:0.95rem;font-weight:500;color:var(--ink);">chaitanyaaggarwal9@gmail.com</div></div>
+            <span style="margin-left:auto;color:var(--red);">→</span>
+          </a>
+
+          <a href="https://linkedin.com/in/chaitanyaagg" target="_blank" style="display:flex;align-items:center;gap:1rem;padding:1.25rem;background:var(--white);border:1px solid var(--cream-border);border-radius:8px;text-decoration:none;transition:all 0.3s;"
+            onmouseover="this.style.borderColor='var(--red)';this.style.transform='translateX(4px)'"
+            onmouseout="this.style.borderColor='var(--cream-border)';this.style.transform='none'">
+            <span style="font-size:1.3rem;">💼</span>
+            <div><div style="font-size:0.75rem;font-weight:600;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.1em;">LinkedIn</div><div style="font-size:0.95rem;font-weight:500;color:var(--ink);">linkedin.com/in/chaitanyaagg</div></div>
+            <span style="margin-left:auto;color:var(--red);">→</span>
+          </a>
+
+          <a href="https://github.com/chaitanyaaggarwal9" target="_blank" style="display:flex;align-items:center;gap:1rem;padding:1.25rem;background:var(--white);border:1px solid var(--cream-border);border-radius:8px;text-decoration:none;transition:all 0.3s;"
+            onmouseover="this.style.borderColor='var(--red)';this.style.transform='translateX(4px)'"
+            onmouseout="this.style.borderColor='var(--cream-border)';this.style.transform='none'">
+            <span style="font-size:1.3rem;">🐙</span>
+            <div><div style="font-size:0.75rem;font-weight:600;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.1em;">GitHub</div><div style="font-size:0.95rem;font-weight:500;color:var(--ink);">github.com/chaitanyaaggarwal9</div></div>
+            <span style="margin-left:auto;color:var(--red);">→</span>
+          </a>
+
+          <a href="https://finwise.tech" target="_blank" style="display:flex;align-items:center;gap:1rem;padding:1.25rem;background:var(--white);border:1px solid var(--cream-border);border-radius:8px;text-decoration:none;transition:all 0.3s;"
+            onmouseover="this.style.borderColor='var(--red)';this.style.transform='translateX(4px)'"
+            onmouseout="this.style.borderColor='var(--cream-border)';this.style.transform='none'">
+            <span style="font-size:1.3rem;">🚀</span>
+            <div><div style="font-size:0.75rem;font-weight:600;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.1em;">Live Product</div><div style="font-size:0.95rem;font-weight:500;color:var(--ink);">finwise.tech</div></div>
+            <span style="margin-left:auto;color:var(--red);">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal" data-aos-delay="200" style="text-align:center;">
+        <a href="https://calendly.com/chaitanyaaggarwal9/30min" target="_blank"
+           style="display:inline-flex;flex-direction:column;align-items:center;gap:1rem;padding:3rem;background:var(--ink);border-radius:12px;text-decoration:none;transition:all 0.3s;width:100%;"
+           onmouseover="this.style.background='var(--red)'"
+           onmouseout="this.style.background='var(--ink)'">
+          <span style="font-size:2.5rem;">📅</span>
+          <div>
+            <div style="font-family:var(--serif);font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:0.5rem;">Book a 30-min call</div>
+            <div style="font-size:0.875rem;color:rgba(255,255,255,0.5);">Role fit · Portfolio walkthrough · Product case discussions</div>
+          </div>
+          <div style="background:var(--red);color:#fff;padding:0.6rem 1.5rem;border-radius:4px;font-size:0.875rem;font-weight:600;">Schedule via Calendly →</div>
+        </a>
+
+        <div style="margin-top:2rem;padding:1.5rem;background:var(--white);border-radius:8px;border:1px solid var(--cream-border);">
+          <div style="font-size:0.75rem;font-weight:600;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.75rem;">What we can cover</div>
+          <div style="display:flex;flex-direction:column;gap:0.4rem;text-align:left;">
+            <div style="font-size:0.875rem;color:var(--ink-soft);display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--red);">→</span>Role fit & portfolio walkthrough</div>
+            <div style="font-size:0.875rem;color:var(--ink-soft);display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--red);">→</span>0→1 product planning & prioritization</div>
+            <div style="font-size:0.875rem;color:var(--ink-soft);display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--red);">→</span>AI product ideas, LLM workflows</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="reveal" style="margin-top:5rem;padding-top:2rem;border-top:1px solid var(--cream-border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <div style="font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--ink);">Chaitanya <span style="color:var(--red);">Aggarwal</span></div>
+      <div style="font-size:0.8rem;color:var(--ink-muted);">© 2026 · PM · AI Specialist · Builder · Washington DC</div>
+      <div style="display:flex;gap:1rem;">
+        <a href="mailto:chaitanyaaggarwal9@gmail.com" style="font-size:0.8rem;color:var(--ink-muted);transition:color 0.2s;" onmouseover="this.style.color='var(--red)'" onmouseout="this.style.color='var(--ink-muted)'">Email</a>
+        <a href="https://linkedin.com/in/chaitanyaagg" target="_blank" style="font-size:0.8rem;color:var(--ink-muted);transition:color 0.2s;" onmouseover="this.style.color='var(--red)'" onmouseout="this.style.color='var(--ink-muted)'">LinkedIn</a>
+        <a href="https://github.com/chaitanyaaggarwal9" target="_blank" style="font-size:0.8rem;color:var(--ink-muted);transition:color 0.2s;" onmouseover="this.style.color='var(--red)'" onmouseout="this.style.color='var(--ink-muted)'">GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
