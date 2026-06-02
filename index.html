@@ -50,7 +50,6 @@
       <a href="#cases">Work</a>
       <a href="#thinking">Thinking</a>
       <a href="#skills">Skills</a>
-      <a href="#chat">Ask Me</a>
       <a href="#contact" class="nav-cta">Contact</a>
     </div>
   </div>
@@ -71,5 +70,120 @@
 
 <script src="js/app.js"></script>
 <script src="js/chat.js"></script>
-</body>
-</html>
+
+<!-- ===== FLOATING CHAT BUBBLE ===== -->
+<style>
+  #chat-bubble-btn {
+    position: fixed; bottom: 2rem; left: 2rem; z-index: 9000;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--ink); color: #fff;
+    border: none; cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; transition: all 0.3s ease;
+    transform: translateY(80px); opacity: 0;
+    animation: bubbleIn 0.5s 3s ease forwards;
+  }
+  @keyframes bubbleIn { to { transform: translateY(0); opacity: 1; } }
+  #chat-bubble-btn:hover { background: var(--red); transform: scale(1.08); }
+  #chat-bubble-btn .chat-badge {
+    position: absolute; top: -4px; right: -4px;
+    width: 18px; height: 18px; background: var(--red);
+    border-radius: 50%; border: 2px solid var(--cream);
+    font-size: 0.55rem; font-weight: 700; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    animation: badgePulse 2s infinite;
+  }
+  @keyframes badgePulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.2)} }
+
+  #chat-bubble-window {
+    position: fixed; bottom: 6.5rem; left: 2rem; z-index: 9000;
+    width: 340px; border-radius: 16px; overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+    border: 1px solid var(--cream-border);
+    transform: scale(0.85) translateY(20px);
+    transform-origin: bottom left;
+    opacity: 0; pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  #chat-bubble-window.open {
+    transform: scale(1) translateY(0);
+    opacity: 1; pointer-events: all;
+  }
+  .cb-header {
+    background: var(--ink); padding: 1rem 1.25rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .cb-avatar {
+    width: 36px; height: 36px; background: var(--red);
+    border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; font-weight: 700; color: #fff;
+    font-size: 0.85rem; flex-shrink: 0;
+  }
+  .cb-name { font-size: 0.85rem; font-weight: 600; color: #fff; }
+  .cb-status { font-size: 0.7rem; color: rgba(255,255,255,0.4); display: flex; align-items: center; gap: 0.3rem; }
+  .cb-status-dot { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; display: inline-block; animation: pulse-green 2s infinite; }
+  .cb-close { margin-left: auto; background: none; border: none; color: rgba(255,255,255,0.4); font-size: 1.1rem; cursor: pointer; padding: 0; line-height: 1; }
+  .cb-close:hover { color: #fff; }
+  .cb-messages {
+    background: var(--cream); padding: 1rem;
+    height: 260px; overflow-y: auto;
+    display: flex; flex-direction: column; gap: 0.75rem;
+  }
+  .cb-messages::-webkit-scrollbar { width: 3px; }
+  .cb-messages::-webkit-scrollbar-thumb { background: var(--cream-border); border-radius: 2px; }
+  .cb-msg { display: flex; gap: 0.5rem; align-items: flex-start; }
+  .cb-msg.user { flex-direction: row-reverse; }
+  .cb-msg-avatar { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; font-weight: 700; color: #fff; flex-shrink: 0; }
+  .cb-msg-bubble { padding: 0.6rem 0.85rem; border-radius: 0 10px 10px 10px; max-width: 82%; font-size: 0.82rem; line-height: 1.55; }
+  .cb-msg.bot .cb-msg-bubble { background: var(--white); border: 1px solid var(--cream-border); color: var(--ink-soft); }
+  .cb-msg.user .cb-msg-bubble { background: var(--ink); color: #fff; border-radius: 10px 0 10px 10px; }
+  .cb-sugs { padding: 0.6rem 1rem; background: var(--cream); border-top: 1px solid var(--cream-border); display: flex; gap: 0.35rem; flex-wrap: wrap; }
+  .cb-sug { background: var(--white); border: 1px solid var(--cream-border); color: var(--ink-soft); font-size: 0.72rem; padding: 0.25rem 0.6rem; border-radius: 20px; cursor: pointer; transition: all 0.2s; font-family: var(--sans); }
+  .cb-sug:hover { background: var(--red); color: #fff; border-color: var(--red); }
+  .cb-input-row { padding: 0.75rem 1rem; background: var(--white); border-top: 1px solid var(--cream-border); display: flex; gap: 0.5rem; }
+  .cb-input { flex: 1; border: 1px solid var(--cream-border); border-radius: 20px; padding: 0.5rem 0.9rem; font-size: 0.82rem; font-family: var(--sans); outline: none; background: var(--cream); transition: border-color 0.2s; cursor: auto; }
+  .cb-input:focus { border-color: var(--red); }
+  .cb-send { background: var(--red); color: #fff; border: none; border-radius: 20px; padding: 0.5rem 1rem; font-size: 0.82rem; font-weight: 600; font-family: var(--sans); cursor: pointer; transition: background 0.2s; flex-shrink: 0; }
+  .cb-send:hover { background: var(--red-dark); }
+  .cb-tooltip {
+    position: fixed; bottom: 8.5rem; left: 2rem;
+    background: var(--ink); color: #fff;
+    padding: 0.5rem 0.9rem; border-radius: 8px;
+    font-size: 0.8rem; font-family: var(--sans); font-weight: 500;
+    white-space: nowrap; pointer-events: none;
+    opacity: 0; transform: translateY(4px);
+    transition: all 0.2s; z-index: 8999;
+  }
+  .cb-tooltip::after { content:''; position:absolute; bottom:-5px; left:20px; border:5px solid transparent; border-top-color:var(--ink); border-bottom:none; }
+  #chat-bubble-btn:hover ~ #cb-tooltip { opacity: 1; transform: translateY(0); }
+</style>
+
+<!-- Bubble trigger button -->
+<button id="chat-bubble-btn" onclick="toggleChatBubble()" aria-label="Ask Chaitanya">
+  💬
+  <span class="chat-badge">1</span>
+</button>
+<div id="cb-tooltip" class="cb-tooltip">Ask me anything 👋</div>
+
+<!-- Chat window -->
+<div id="chat-bubble-window">
+  <div class="cb-header">
+    <div class="cb-avatar">CA</div>
+    <div>
+      <div class="cb-name">Chaitanya Aggarwal</div>
+      <div class="cb-status"><span class="cb-status-dot"></span>Online · replies instantly</div>
+    </div>
+    <button class="cb-close" onclick="toggleChatBubble()">✕</button>
+  </div>
+
+  <div class="cb-messages" id="cb-messages">
+    <div class="cb-msg bot">
+      <div class="cb-msg-avatar" style="background:var(--red);">CA</div>
+      <div class="cb-msg-bubble">Hey! I'm Chaitanya. Ask me anything about my work, how I think, or whether I'm the right PM for your team. 👋</div>
+    </div>
+  </div>
+
+  <div class="cb-sugs" id="cb-sugs">
+    <button class="cb-sug" onclick="cbAsk('What type of PM are you?')">What type of PM?</button>
+    <button class="cb-su
