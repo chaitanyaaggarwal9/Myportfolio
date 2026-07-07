@@ -1,68 +1,62 @@
-# Chaitanya Aggarwal — Portfolio
+# Chaitanya Aggarwal - Product OS Portfolio
+
+A cinematic static portfolio for Chaitanya Aggarwal, built as an interactive "Product OS" instead of a traditional resume page.
+
+## What Changed
+
+- Full-screen Product OS hero with boot sequence.
+- Animated signal canvas background.
+- Mission-style case study switcher.
+- AI PM Lab terminal with guided prompts.
+- Recruiter Fast Mode for quick hiring signal.
+- Animated capability radar and trajectory timeline.
+- Fully static deployment with no build step.
 
 ## File Structure
-```
+
+```text
 portfolio/
-├── index.html              ← Main shell (edit nav/meta here)
-├── sections/
-│   ├── hero.html           ← Hero section (photo, tagline, stats)
-│   ├── advantage.html      ← Unfair advantage + journey timeline
-│   ├── cases.html          ← 4 case studies
-│   ├── skills.html         ← Skills + certifications
-│   └── contact.html        ← AI chat bot + contact + footer
+├── index.html
 ├── css/
-│   ├── main.css            ← Global styles, colors, typography
-│   └── animations.css      ← All animations and scroll effects
+│   └── main.css
 ├── js/
-│   ├── app.js              ← All JS: animations, cursor, loader
-│   └── chat.js             ← AI bot Q&A (edit answers here)
+│   └── app.js
 └── assets/
-    ├── photo.jpg           ← YOUR PHOTO (add this!)
-    └── Chaitanya_Aggarwal_Resume.pdf  ← YOUR RESUME (add this!)
+    ├── photo.jpg
+    └── Chaitanya_Aggarwal_Resume.pdf
 ```
 
-## Setup
+The portfolio is now a single cohesive page. There are no section partials, build tools, or runtime dependencies.
 
-### 1. Add your photo
-Place your photo as `assets/photo.jpg`
+## Local Preview
 
-### 2. Add your resume
-Place your resume as `assets/Chaitanya_Aggarwal_Resume.pdf`
+Because the page is static, you can run any simple local server:
 
-### 3. Deploy to Vercel
-1. Push this folder to a GitHub repo
-2. Go to vercel.com → New Project → Import your repo
-3. Vercel auto-detects static site → Deploy
-4. Add custom domain: chaitanyaaggarwal.com
+```bash
+python3 -m http.server 8000
+```
 
-### 4. Add custom domain
-In Vercel project settings → Domains → Add `chaitanyaaggarwal.com`
-Update your DNS (wherever you bought the domain) to point to Vercel.
+Then open:
 
-## Editing Sections
-Each section is its own file — edit independently:
+```text
+http://localhost:8000
+```
 
-- **Change hero tagline**: `sections/hero.html` line ~8
-- **Update case studies**: `sections/cases.html`
-- **Edit chat Q&As**: `js/chat.js` → update the `QA` object
-- **Add certifications**: `sections/skills.html`
-- **Update contact info**: `sections/contact.html`
+## Deploy
 
-## Colors (edit in css/main.css)
-- `--red: #e63946` — accent color
-- `--ink: #0d0d0d` — dark text
-- `--cream: #faf8f3` — page background
-- `--cream-dark: #f0ece4` — section background
+This repo deploys cleanly on Vercel, Netlify, GitHub Pages, or any static host.
 
-## Tech Stack
-- Pure HTML + CSS + JavaScript
-- No frameworks, no npm, no build step
-- Google Fonts (Playfair Display + DM Sans)
-- Zero external dependencies
-- Deploys as static site
+For Vercel:
 
-## Performance
-- Page load: ~200ms
-- No JavaScript frameworks
-- Fonts loaded from Google CDN
-- All animations CSS-based (GPU accelerated)
+1. Push to GitHub.
+2. Import the repo in Vercel.
+3. Keep the default static settings.
+4. Add the custom domain `chaitanyaaggarwal.com`.
+
+## Editing
+
+- Main content: `index.html`
+- Visual system and responsive behavior: `css/main.css`
+- Animations, terminal answers, mission data: `js/app.js`
+- Resume: `assets/Chaitanya_Aggarwal_Resume.pdf`
+- Photo: `assets/photo.jpg`
