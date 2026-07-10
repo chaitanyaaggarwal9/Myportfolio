@@ -1,4 +1,14 @@
 const cases = {
+  aigym: {
+    sector: "Product Manager / Live Product",
+    title: "AI Gym Coach",
+    summary: "0 to 1 AI fitness-coaching product (web + mobile) taken from concept to public beta in 9 months, now live with real users.",
+    problem: "Generic fitness apps gave workouts, not coaching — users did not know what to do next or why.",
+    action: "Led market and competitive research plus customer interviews, translated findings into PRDs and roadmap decisions, ran agile delivery across a 30+ person cross-functional team.",
+    result: "Public beta live in under 9 months, now at 10K+ MAU, delivery velocity up 25%, MVP hit in under 6 months.",
+    impact: "10K+",
+    link: "https://www.myaigymcoach.com/"
+  },
   finwise: {
     sector: "Founder / Live Product",
     title: "Finwise",
@@ -10,12 +20,12 @@ const cases = {
     link: "https://finwise.tech"
   },
   savax: {
-    sector: "FinTech / B2B SaaS",
+    sector: "FinTech / B2B SaaS / Program Manager",
     title: "Savax Credit",
-    summary: "A vendor payment automation platform for a high-stakes credit workflow with manual processes and limited visibility.",
-    problem: "Vendors missed payments, manual workflows slowed teams, and NPAs reached $1.8M annually.",
-    action: "Defined product vision, led engineering and data teams, implemented SAFe agile, and aligned CXO stakeholders.",
-    result: "$1.8M annual NPA reduction, 25% enterprise upsell lift, 30% onboarding reduction, and zero compliance issues.",
+    summary: "Vendor payment automation platform for a high-stakes B2B credit workflow with manual processes and limited visibility.",
+    problem: "Vendors missed payments, manual workflows slowed teams, and NPAs were climbing YoY.",
+    action: "Led market and competitive research with KPI-driven prioritization, evaluated pricing strategy against cost and revenue forecasts, drafted audit-ready product requirements.",
+    result: "$1.8M NPA reduction (20% YoY), 25% enterprise upsell lift, 30% onboarding reduction, and zero compliance issues across quarterly audits.",
     impact: "$1.8M",
     link: "#contact"
   },
@@ -41,37 +51,6 @@ const cases = {
   }
 };
 
-const answers = [
-  {
-    keys: ["type", "pm", "product"],
-    text: "I am a 0 to 1 product builder: strongest when the problem is ambiguous, the users are frustrated, and the team needs someone to turn noise into a shipped product."
-  },
-  {
-    keys: ["ai", "llm", "gpt", "gemini"],
-    text: "My AI experience is hands-on: LLM evaluation at Handshake AI, Gemini API product work in Finwise, prompt design, hallucination detection, and bias evaluation."
-  },
-  {
-    keys: ["prioritize", "priority", "features", "roadmap"],
-    text: "I prioritize with user pain, business impact, confidence, and effort. RICE helps, but interviews and product telemetry keep the spreadsheet honest."
-  },
-  {
-    keys: ["engineer", "developer", "team"],
-    text: "I work with engineers by clarifying the why, reducing ambiguity, protecting focus, and writing requirements that respect implementation reality."
-  },
-  {
-    keys: ["savax", "impact", "win"],
-    text: "The clearest product win was Savax: a B2B payment platform that reduced $1.8M in annual NPAs, improved upsells, shortened onboarding, and stayed compliant."
-  },
-  {
-    keys: ["finwise", "finance"],
-    text: "Finwise is an AI personal finance coach I built end-to-end with React, Firebase, and Gemini API after user interviews showed people wanted decisions, not dashboards."
-  },
-  {
-    keys: ["contact", "hire", "available", "work"],
-    text: "Yes, I am open to PM and Senior PM roles, especially AI-first, SaaS, FinTech, EdTech, or 0 to 1 teams. Email: chaitanyaaggarwal9@gmail.com."
-  }
-];
-
 function initBoot() {
   const boot = document.getElementById("boot");
   const stream = document.getElementById("boot-stream");
@@ -79,9 +58,9 @@ function initBoot() {
 
   const lines = [
     "loading product judgment...",
-    "mounting AI evaluation logs...",
+    "spinning up turbine core...",
     "indexing shipped products...",
-    "syncing recruiter fast mode...",
+    "forming neural pathways...",
     "system ready."
   ];
 
@@ -94,98 +73,6 @@ function initBoot() {
   });
 
   setTimeout(() => boot.classList.add("done"), 2100);
-}
-
-function initCanvas() {
-  const canvas = document.getElementById("signal-canvas");
-  if (!canvas) return;
-  const ctx = canvas.getContext("2d");
-  const particles = [];
-  let width = 0;
-  let height = 0;
-  let pointer = { x: 0, y: 0, active: false };
-
-  function resize() {
-    const ratio = Math.min(window.devicePixelRatio || 1, 2);
-    width = window.innerWidth;
-    height = window.innerHeight;
-    canvas.width = width * ratio;
-    canvas.height = height * ratio;
-    canvas.style.width = `${width}px`;
-    canvas.style.height = `${height}px`;
-    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-    particles.length = 0;
-    const count = Math.min(90, Math.floor(width * height / 17000));
-    for (let i = 0; i < count; i++) {
-      particles.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
-        r: Math.random() * 1.8 + 0.6
-      });
-    }
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, width, height);
-    ctx.fillStyle = "rgba(73, 215, 255, 0.58)";
-    ctx.strokeStyle = "rgba(255, 255, 255, 0.08)";
-
-    particles.forEach((p, i) => {
-      p.x += p.vx;
-      p.y += p.vy;
-      if (p.x < 0 || p.x > width) p.vx *= -1;
-      if (p.y < 0 || p.y > height) p.vy *= -1;
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fill();
-
-      for (let j = i + 1; j < particles.length; j++) {
-        const q = particles[j];
-        const dx = p.x - q.x;
-        const dy = p.y - q.y;
-        const dist = Math.hypot(dx, dy);
-        if (dist < 130) {
-          ctx.globalAlpha = 1 - dist / 130;
-          ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(q.x, q.y);
-          ctx.stroke();
-        }
-      }
-
-      if (pointer.active) {
-        const dx = p.x - pointer.x;
-        const dy = p.y - pointer.y;
-        const dist = Math.hypot(dx, dy);
-        if (dist < 170) {
-          ctx.globalAlpha = 1 - dist / 170;
-          ctx.strokeStyle = "rgba(255, 59, 79, 0.45)";
-          ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(pointer.x, pointer.y);
-          ctx.stroke();
-          ctx.strokeStyle = "rgba(255, 255, 255, 0.08)";
-        }
-      }
-      ctx.globalAlpha = 1;
-    });
-
-    requestAnimationFrame(draw);
-  }
-
-  window.addEventListener("resize", resize);
-  window.addEventListener("pointermove", event => {
-    pointer = { x: event.clientX, y: event.clientY, active: true };
-  });
-  window.addEventListener("pointerleave", () => {
-    pointer.active = false;
-  });
-
-  resize();
-  draw();
 }
 
 function initReveal() {
@@ -258,51 +145,6 @@ function initMissionTabs() {
   });
 }
 
-function findAnswer(question) {
-  const q = question.toLowerCase();
-  const match = answers.find(item => item.keys.some(key => q.includes(key)));
-  return match ? match.text : "Strong question. The short version: I start with the user pain, define the business outcome, align the team on tradeoffs, and ship the smallest version that can teach us something real.";
-}
-
-function addTerminalLine(role, text) {
-  const body = document.getElementById("terminal-body");
-  if (!body) return;
-  const line = document.createElement("p");
-  const label = document.createElement("b");
-  label.textContent = role;
-  line.appendChild(label);
-  line.append(document.createTextNode(text));
-  body.appendChild(line);
-  body.scrollTop = body.scrollHeight;
-}
-
-function initTerminal() {
-  const form = document.getElementById("terminal-form");
-  const input = document.getElementById("terminal-input");
-  const prompts = document.getElementById("prompt-buttons");
-  if (!form || !input) return;
-
-  function ask(question) {
-    const clean = question.trim();
-    if (!clean) return;
-    addTerminalLine("you", clean);
-    input.value = "";
-    setTimeout(() => addTerminalLine("agent", findAnswer(clean)), 360);
-  }
-
-  form.addEventListener("submit", event => {
-    event.preventDefault();
-    ask(input.value);
-  });
-
-  if (prompts) {
-    prompts.addEventListener("click", event => {
-      const button = event.target.closest("button[data-prompt]");
-      if (button) ask(button.dataset.prompt);
-    });
-  }
-}
-
 function initTilt() {
   if (window.matchMedia("(pointer: coarse)").matches) return;
   document.querySelectorAll(".tilt").forEach(card => {
@@ -316,17 +158,6 @@ function initTilt() {
     card.addEventListener("pointerleave", () => {
       card.style.transform = "";
     });
-  });
-}
-
-function initFastMode() {
-  const button = document.getElementById("mode-toggle");
-  if (!button) return;
-  button.addEventListener("click", () => {
-    document.body.classList.toggle("fast-mode");
-    const on = document.body.classList.contains("fast-mode");
-    button.textContent = on ? "Exit Fast Mode" : "Recruiter Fast Mode";
-    if (on) document.getElementById("recruiter-panel")?.scrollIntoView({ behavior: "smooth", block: "center" });
   });
 }
 
@@ -347,12 +178,9 @@ function initMagneticButtons() {
 
 document.addEventListener("DOMContentLoaded", () => {
   initBoot();
-  initCanvas();
   initReveal();
   initCounters();
   initMissionTabs();
-  initTerminal();
   initTilt();
-  initFastMode();
   initMagneticButtons();
 });

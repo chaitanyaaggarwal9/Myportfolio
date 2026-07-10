@@ -5,12 +5,10 @@ A cinematic static portfolio for Chaitanya Aggarwal, built as an interactive "Pr
 ## What Changed
 
 - Full-screen Product OS hero with boot sequence.
-- Animated signal canvas background.
-- Mission-style case study switcher.
-- AI PM Lab terminal with guided prompts.
-- Recruiter Fast Mode for quick hiring signal.
-- Animated capability radar and trajectory timeline.
-- Fully static deployment with no build step.
+- Real WebGL 3D centerpiece: a procedural turbine that morphs into a neural network as you scroll, visualizing the arc from mechanical engineering to AI product management.
+- Mission-style case study switcher (AI Gym Coach, Finwise, Savax, MyGWU, PKA Labor).
+- Static recruiter fast-signal strip and a systems-engineering "roots" panel.
+- Fully static deployment with no build step — Three.js is loaded as an ES module straight from a CDN via an import map, no npm/bundler required.
 
 ## File Structure
 
@@ -20,13 +18,14 @@ portfolio/
 ├── css/
 │   └── main.css
 ├── js/
-│   └── app.js
+│   ├── app.js
+│   └── scene.js
 └── assets/
     ├── photo.jpg
     └── Chaitanya_Aggarwal_Resume.pdf
 ```
 
-The portfolio is now a single cohesive page. There are no section partials, build tools, or runtime dependencies.
+The portfolio is a single cohesive page. There are no section partials, build tools, or runtime dependencies — `js/scene.js` pulls in Three.js via the `<script type="importmap">` in `index.html`.
 
 ## Local Preview
 
@@ -57,6 +56,7 @@ For Vercel:
 
 - Main content: `index.html`
 - Visual system and responsive behavior: `css/main.css`
-- Animations, terminal answers, mission data: `js/app.js`
+- Reveal animations, counters, mission data: `js/app.js`
+- 3D turbine-to-neural-network scene: `js/scene.js`
 - Resume: `assets/Chaitanya_Aggarwal_Resume.pdf`
 - Photo: `assets/photo.jpg`
