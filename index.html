@@ -1,251 +1,204 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Chaitanya Aggarwal - AI Product Manager, 0 to 1 builder, and product operator based in Washington DC.">
-  <meta name="keywords" content="Product Manager, AI Product Manager, SaaS, FinTech, EdTech, LLM, 0 to 1, Washington DC">
-  <meta property="og:title" content="Chaitanya Aggarwal - Product OS">
-  <meta property="og:description" content="A 3D Product OS portfolio for an AI Product Manager and 0 to 1 builder: a turbine that morphs into a neural network as you scroll.">
-  <meta property="og:url" content="https://chaitanyaaggarwal.com">
-  <title>Chaitanya Aggarwal - Product OS</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23070a12'/><text y='68' x='50' text-anchor='middle' font-size='48' font-weight='900' fill='%23ff3b4f' font-family='Arial'>CA</text></svg>">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Chaitanya Aggarwal is an AI Product Manager turning complex problems into useful products—from mechanical systems to AI experiences used by 10K+ people.">
+  <meta name="theme-color" content="#f7f5ef">
+  <meta property="og:title" content="Chaitanya Aggarwal — AI Product Manager">
+  <meta property="og:description" content="Mechanical mind. Product instinct. AI ambition.">
+  <title>Chaitanya Aggarwal — AI Product Manager</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%235348ee'/><text x='50' y='68' text-anchor='middle' font-size='50' font-family='Arial' font-weight='700' fill='white'>CA</text></svg>">
   <link rel="stylesheet" href="css/main.css">
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
-      }
-    }
-  </script>
 </head>
 <body>
-  <div class="boot" id="boot">
-    <div class="boot-panel">
-      <div class="boot-kicker">Product OS</div>
-      <div class="boot-title">Initializing Chaitanya Aggarwal</div>
-      <div class="boot-stream" id="boot-stream"></div>
-      <div class="boot-track"><div class="boot-bar"></div></div>
-    </div>
-  </div>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <canvas id="signal-canvas" aria-hidden="true"></canvas>
-  <div class="noise" aria-hidden="true"></div>
-  <div class="scanline" aria-hidden="true"></div>
-
-  <header class="topbar">
-    <a class="brand" href="#hero" aria-label="Go to top">
-      <span class="brand-mark">CA</span>
-      <span>Product OS</span>
-    </a>
-    <nav class="nav-links" aria-label="Primary navigation">
-      <a href="#trajectory">Trajectory</a>
-      <a href="#missions">Missions</a>
-      <a href="#contact">Contact</a>
+  <header class="site-header">
+    <a class="logo" href="#top" aria-label="Chaitanya Aggarwal, home">CA<span>.</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#work">Work</a>
+      <a href="#journey">Journey</a>
+      <a href="#about">About</a>
     </nav>
+    <a class="header-cta" href="mailto:chaitanyaaggarwal9@gmail.com">Let’s talk <span aria-hidden="true">↗</span></a>
   </header>
 
-  <main>
-    <section class="hero" id="hero">
-      <div class="hero-grid">
-        <div class="hero-copy reveal">
-          <div class="eyebrow"><span></span> Live portfolio system / PM candidate profile</div>
-          <h1>
-            Chaitanya
-            <span>Aggarwal</span>
-          </h1>
-          <p class="hero-lede">
-            AI Product Manager, 0 to 1 builder, and operator who turns messy user pain into shipped products with measurable business impact. Mechanical engineer by training, AI product builder by trade.
-          </p>
-          <div class="hero-actions">
-            <a class="btn primary magnetic" href="#missions">Launch Missions</a>
-            <a class="btn ghost magnetic" href="assets/Chaitanya_Aggarwal_Resume.pdf" download>Download Resume</a>
-          </div>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <p class="kicker"><span></span> AI Product Manager · Washington, DC</p>
+        <h1>Mechanical mind.<br><em>Product instinct.</em><br>AI ambition.</h1>
+        <p class="hero-text">I’m Chaitanya. I turn complicated, messy problems into useful products people actually want—from financial systems to AI experiences.</p>
+        <div class="hero-actions">
+          <a class="button button-dark" href="#work">Explore my work <span aria-hidden="true">↓</span></a>
+          <a class="button button-light" href="assets/Chaitanya_Aggarwal_Resume.pdf" target="_blank">View résumé <span aria-hidden="true">↗</span></a>
         </div>
-
-        <div class="command-deck reveal">
-          <div class="deck-top">
-            <div>
-              <span class="status-dot"></span>
-              Status: open to PM roles
-            </div>
-            <div>Washington DC / Remote / Hybrid</div>
-          </div>
-          <div class="identity-card tilt">
-            <div class="portrait-shell">
-              <img src="assets/photo.jpg" alt="Chaitanya Aggarwal">
-              <div class="portrait-ring"></div>
-            </div>
-            <div class="identity-copy">
-              <div class="mini-label">Candidate ID</div>
-              <strong>AI PM / Builder</strong>
-              <span>FinTech, EdTech, SaaS, LLM evaluation</span>
-            </div>
-          </div>
-          <div class="metric-grid">
-            <div class="metric-card tilt">
-              <span>#</span>
-              <strong data-counter="10">0</strong>
-              <em>K+ MAU shipped</em>
-            </div>
-            <div class="metric-card tilt">
-              <span>$</span>
-              <strong data-counter="1.8" data-decimal="1">0.0</strong>
-              <em>M impact driven</em>
-            </div>
-            <div class="metric-card tilt">
-              <span>+</span>
-              <strong data-counter="30">0</strong>
-              <em>team members led</em>
-            </div>
-          </div>
-        </div>
+        <ul class="proof" aria-label="Career highlights">
+          <li><strong>10K+</strong><span>monthly users shipped</span></li>
+          <li><strong>$1.8M</strong><span>business impact</span></li>
+          <li><strong>30+</strong><span>people led</span></li>
+        </ul>
       </div>
 
-      <div class="ticker" aria-label="Portfolio highlights">
-        <div class="ticker-track">
-          <span>AI product strategy</span>
-          <span>LLM evaluation</span>
-          <span>B2B SaaS</span>
-          <span>0 to 1 launches</span>
-          <span>User research</span>
-          <span>Roadmaps that ship</span>
-          <span>AI product strategy</span>
-          <span>LLM evaluation</span>
-          <span>B2B SaaS</span>
-          <span>0 to 1 launches</span>
-          <span>User research</span>
-          <span>Roadmaps that ship</span>
+      <div class="hero-visual" aria-label="A mechanical turbine transforming into an AI network">
+        <div class="visual-label label-build">BUILD</div>
+        <div class="visual-label label-learn">LEARN</div>
+        <div class="visual-label label-ship">SHIP</div>
+        <div class="portrait-card">
+          <img src="assets/photo.jpg" alt="Chaitanya Aggarwal" width="1000" height="964">
+          <div class="portrait-note">Builder at heart <span>✦</span></div>
         </div>
+        <div class="machine" aria-hidden="true">
+          <div class="orbit orbit-a"><i></i><i></i><i></i></div>
+          <div class="orbit orbit-b"><i></i><i></i></div>
+          <div class="core"><span>0→1</span></div>
+        </div>
+        <div class="spark spark-a">✦</div>
+        <div class="spark spark-b">✦</div>
       </div>
     </section>
 
-    <section class="recruiter-strip" id="recruiter">
-      <div>
-        <div class="eyebrow"><span></span> Fast Signal</div>
-        <h2>For hiring teams short on time.</h2>
-      </div>
-      <div class="recruiter-grid">
-        <article>
-          <strong>Target roles</strong>
-          <p>Product Manager, Senior PM, AI PM.</p>
-        </article>
-        <article>
-          <strong>Best fit</strong>
-          <p>AI-first teams, EdTech, FinTech, B2B SaaS, 0 to 1 products.</p>
-        </article>
-        <article>
-          <strong>Proof</strong>
-          <p>10K+ MAU AI product, $1.8M NPA reduction, 30+ person team led.</p>
-        </article>
-        <article>
-          <strong>Contact</strong>
-          <p><a href="mailto:chaitanyaaggarwal9@gmail.com">chaitanyaaggarwal9@gmail.com</a></p>
-        </article>
-      </div>
-    </section>
+    <div class="marquee" aria-hidden="true">
+      <div>PRODUCT STRATEGY ✦ AI EXPERIENCES ✦ USER RESEARCH ✦ ZERO TO ONE ✦ PRODUCTS THAT SHIP ✦ PRODUCT STRATEGY ✦ AI EXPERIENCES ✦ USER RESEARCH ✦ ZERO TO ONE ✦ PRODUCTS THAT SHIP ✦</div>
+    </div>
 
-    <section class="section" id="trajectory">
-      <div class="section-head reveal">
-        <div class="eyebrow"><span></span> Trajectory</div>
-        <h2>From turbines to neural networks.</h2>
-        <p>Scroll through the arc: systems engineering roots, program management, and AI-first product building. Watch the background turbine become a neural network as you go.</p>
-      </div>
-      <div class="timeline reveal">
-        <div class="timeline-line"></div>
-        <article><span>2015</span><strong>Industrial Systems Intern</strong><p>Indraprastha Power Generation Plant &mdash; gas turbine systems, cooling and lubrication operations.</p></article>
-        <article><span>2016</span><strong>B.Tech Mechanical Engineering</strong><p>Sharda University &mdash; the systems-thinking base everything else was built on.</p></article>
-        <article><span>2020 - 2023</span><strong>Program Manager</strong><p>Savax Credit Solutions &mdash; owned a B2B SaaS roadmap, cut NPAs 20% YoY.</p></article>
-        <article><span>2022</span><strong>Maintenance Engineering Intern</strong><p>Northern Railways Coach Care Centre &mdash; rolling stock assembly and preventive maintenance.</p></article>
-        <article><span>2025</span><strong>MS Engineering Management</strong><p>George Washington University (STEM) &mdash; tech strategy and delivery leadership.</p></article>
-        <article><span>2025 - Present</span><strong>Product Manager</strong><p>MyEdMaster &mdash; 0 to 1 build of AI Gym Coach, now at 10K MAU.</p></article>
-        <article><span>2025 - 2026</span><strong>AI/LLM Trainer</strong><p>Handshake AI Solutions &mdash; human data generation and evaluation across 8+ projects.</p></article>
-        <article><span>2026 - Present</span><strong>AI/LLM Trainer Expert</strong><p>Micro1 Inc. &mdash; quality-review rubrics for AI-generated training data.</p></article>
+    <section class="work section" id="work">
+      <div class="section-intro reveal">
+        <p class="section-number">01 / SELECTED WORK</p>
+        <h2>Proof, not<br><em>promises.</em></h2>
+        <p>Products shaped through research, hard prioritization, and close collaboration—not product theatre.</p>
       </div>
 
-      <div class="roots-grid reveal">
-        <article class="roots-card tilt">
-          <div class="mini-label">Systems Engineering</div>
-          <strong>MBSE Real-Time Tracking System</strong>
-          <p>Architected a real-time tracking system using MBSE principles, Capella, and SysML &mdash; generating operational, functional, logical, and physical system views, and tracing requirements to architecture components.</p>
+      <div class="projects">
+        <article class="project project-violet reveal">
+          <div class="project-copy">
+            <p class="project-tag">AI · FITNESS · 0→1</p>
+            <h3>AI Gym Coach</h3>
+            <p>Turned the frustration of generic workout apps into a personalized AI coaching product—from concept to public beta in nine months.</p>
+            <dl>
+              <div><dt>Impact</dt><dd>10K+ MAU</dd></div>
+              <div><dt>Team</dt><dd>30+ people</dd></div>
+              <div><dt>Velocity</dt><dd>+25%</dd></div>
+            </dl>
+            <a href="https://www.myaigymcoach.com/" target="_blank" rel="noreferrer">Visit live product <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="project-art gym-art" aria-hidden="true">
+            <div class="phone"><div class="phone-top"></div><div class="coach-ring">AI</div><b>Ready to move?</b><span>Today’s plan is built for you.</span><i></i><i></i><i></i></div>
+            <div class="float-stat stat-one"><b>10K+</b><span>active users</span></div>
+            <div class="float-stat stat-two"><b>9 mo</b><span>to public beta</span></div>
+          </div>
         </article>
-        <article class="roots-card tilt">
-          <div class="mini-label">Sustainability / Simulation</div>
-          <strong>Dell Sustainability Optimization</strong>
-          <p>Built a MATLAB genetic algorithm to optimize sustainable material usage for Dell's OptiPlex SFF desktop, identifying a potential 15&ndash;20% reduction in Scope 3 Category 1 emissions.</p>
+
+        <div class="project-pair">
+          <article class="project project-coral reveal">
+            <div class="project-copy">
+              <p class="project-tag">FINTECH · B2B SAAS</p>
+              <h3>Savax Credit</h3>
+              <p>Reworked a high-stakes vendor payment workflow with clearer operations, smarter prioritization, and audit-ready requirements.</p>
+              <dl><div><dt>NPA reduction</dt><dd>$1.8M</dd></div><div><dt>Upsell lift</dt><dd>25%</dd></div></dl>
+              <a href="#contact">Ask me about it <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article class="project project-lime reveal">
+            <div class="project-copy">
+              <p class="project-tag">AI · PERSONAL FINANCE</p>
+              <h3>Finwise</h3>
+              <p>Built an AI finance coach after 15+ interviews revealed that people had plenty of charts—but not enough answers.</p>
+              <dl><div><dt>Validation</dt><dd>50+ scenarios</dd></div><div><dt>Status</dt><dd>Live MVP</dd></div></dl>
+              <a href="https://finwise.tech" target="_blank" rel="noreferrer">Visit live product <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+        </div>
+
+        <article class="project project-blue reveal">
+          <div class="project-copy">
+            <p class="project-tag">EDTECH · MOBILE EXPERIENCE</p>
+            <h3>MyGWU</h3>
+            <p>Unified scattered campus workflows into one mobile experience for schedules, email, alerts, and updates.</p>
+            <dl><div><dt>Reach</dt><dd>10K+ students</dd></div><div><dt>Result</dt><dd>Campus-wide launch</dd></div></dl>
+            <a href="#contact">Ask me about it <span aria-hidden="true">→</span></a>
+          </div>
+          <blockquote>“Make the complex feel obvious.”<span>My product principle</span></blockquote>
         </article>
       </div>
     </section>
 
-    <section class="section" id="missions">
-      <div class="section-head reveal">
-        <div class="eyebrow"><span></span> Mission Archive</div>
-        <h2>Case studies that open like product incidents.</h2>
-        <p>Each mission has a user problem, a decision path, and the result that proved the product worked.</p>
+    <section class="journey section" id="journey">
+      <div class="section-intro reveal">
+        <p class="section-number">02 / THE JOURNEY</p>
+        <h2>From machines<br>to <em>intelligence.</em></h2>
+        <p>Different industries, one constant: understand the system, find the human problem, and build a better way forward.</p>
       </div>
 
-      <div class="mission-layout reveal">
-        <div class="mission-tabs" role="tablist" aria-label="Case studies">
-          <button class="mission-tab active" type="button" data-case="aigym">AI Gym Coach</button>
-          <button class="mission-tab" type="button" data-case="finwise">Finwise</button>
-          <button class="mission-tab" type="button" data-case="savax">Savax Credit</button>
-          <button class="mission-tab" type="button" data-case="mygwu">MyGWU</button>
-          <button class="mission-tab" type="button" data-case="pka">PKA Labor</button>
-        </div>
-
-        <article class="mission-card tilt" id="mission-card">
-          <div class="mission-map" aria-hidden="true">
-            <div class="orbit orbit-one"></div>
-            <div class="orbit orbit-two"></div>
-            <div class="node n1"></div>
-            <div class="node n2"></div>
-            <div class="node n3"></div>
-          </div>
-          <div class="mission-content">
-            <div class="mini-label" id="mission-sector">Product Manager / Live Product</div>
-            <h3 id="mission-title">AI Gym Coach</h3>
-            <p id="mission-summary">0 to 1 AI fitness-coaching product (web + mobile) taken from concept to public beta in 9 months, now live with real users.</p>
-            <div class="mission-columns">
-              <div>
-                <span>Problem</span>
-                <p id="mission-problem">Generic fitness apps gave workouts, not coaching &mdash; users did not know what to do next or why.</p>
-              </div>
-              <div>
-                <span>Decision</span>
-                <p id="mission-action">Led market and competitive research plus customer interviews, translated findings into PRDs and roadmap decisions, ran agile delivery across a 30+ person cross-functional team.</p>
-              </div>
-              <div>
-                <span>Result</span>
-                <p id="mission-result">Public beta live in under 9 months, now at 10K+ MAU, delivery velocity up 25%, MVP hit in under 6 months.</p>
-              </div>
-            </div>
-            <div class="mission-footer">
-              <div class="impact-number" id="mission-impact">10K+</div>
-              <a id="mission-link" href="https://www.myaigymcoach.com/" target="_blank" rel="noreferrer">View mission</a>
-            </div>
-          </div>
+      <div class="timeline" aria-label="Career journey from 2016 to now">
+        <div class="timeline-progress" aria-hidden="true"><span></span></div>
+        <article class="milestone reveal">
+          <time>2016</time><div class="timeline-dot"></div><div><p>THE FOUNDATION</p><h3>Mechanical Engineering</h3><span>Systems thinking began with turbines, mechanics, and the discipline of understanding how every part affects the whole.</span></div>
+        </article>
+        <article class="milestone reveal">
+          <time>2020—23</time><div class="timeline-dot"></div><div><p>THE PRODUCT TURN</p><h3>Program Manager · Savax</h3><span>Moved from analyzing systems to leading them—owning a B2B SaaS roadmap and delivering measurable financial impact.</span></div>
+        </article>
+        <article class="milestone reveal">
+          <time>2025</time><div class="timeline-dot"></div><div><p>THE NEXT LEVEL</p><h3>MS Engineering Management · GWU</h3><span>Combined technical foundations with strategy, leadership, and product delivery in Washington, DC.</span></div>
+        </article>
+        <article class="milestone reveal">
+          <time>2025</time><div class="timeline-dot"></div><div><p>THE 0→1 BUILD</p><h3>Product Manager · AI Gym Coach</h3><span>Led a 30+ person team from an uncertain idea to a live AI product serving more than 10,000 monthly users.</span></div>
+        </article>
+        <article class="milestone reveal">
+          <time>2025—26</time><div class="timeline-dot"></div><div><p>THE AI DEPTH</p><h3>LLM Training & Evaluation</h3><span>Built sharper instincts for AI quality through human-data generation, evaluation, and review rubrics across multiple projects.</span></div>
+        </article>
+        <article class="milestone milestone-now reveal">
+          <time>NOW</time><div class="timeline-dot"></div><div><p>WHAT’S NEXT</p><h3>Building useful AI products</h3><span>Looking for ambitious product teams where curiosity, user empathy, and fast execution matter.</span></div>
         </article>
       </div>
     </section>
 
-    <section class="contact" id="contact">
-      <div class="contact-card reveal tilt">
-        <div>
-          <div class="eyebrow"><span></span> Final Signal</div>
-          <h2>Building something AI-first, messy, and worth shipping?</h2>
-          <p>I am open to Product Manager and Senior PM roles where user empathy, AI fluency, and founder-speed execution matter.</p>
-        </div>
-        <div class="contact-actions">
-          <a class="btn primary" href="mailto:chaitanyaaggarwal9@gmail.com">Email Me</a>
-          <a class="btn ghost" href="assets/Chaitanya_Aggarwal_Resume.pdf" download>Resume</a>
-          <a class="btn ghost" href="https://www.myaigymcoach.com/" target="_blank" rel="noreferrer">AI Gym Coach</a>
-          <a class="btn ghost" href="https://finwise.tech" target="_blank" rel="noreferrer">Finwise</a>
-        </div>
+    <section class="about section" id="about">
+      <div class="about-photo reveal"><img src="assets/photo.jpg" alt="Chaitanya Aggarwal smiling" width="1000" height="964"><span>Yes, I really like shipping things.</span></div>
+      <div class="about-copy reveal">
+        <p class="section-number">03 / A LITTLE MORE HUMAN</p>
+        <h2>Curious by default.<br><em>Restless for impact.</em></h2>
+        <p>I’m a mechanical engineer turned AI product builder. That path taught me to see products as living systems: technology, people, incentives, and tiny details all working together.</p>
+        <p>I’m at my best in the uncertain middle—talking to users, turning ambiguity into a roadmap, and helping cross-functional teams find momentum.</p>
+        <div class="interest-list"><span>AI products</span><span>Systems thinking</span><span>0→1 building</span><span>FinTech</span><span>EdTech</span><span>Good questions</span></div>
       </div>
+    </section>
+
+    <section class="contact section" id="contact">
+      <p class="section-number">04 / LET’S BUILD</p>
+      <h2>Have a hard problem?<br><em>I’m interested.</em></h2>
+      <p>Open to Product Manager and Senior Product Manager opportunities in AI-first teams.</p>
+      <div class="contact-links">
+        <a class="button button-dark" href="mailto:chaitanyaaggarwal9@gmail.com">Email Chaitanya <span aria-hidden="true">↗</span></a>
+        <a class="button button-light" href="assets/Chaitanya_Aggarwal_Resume.pdf" target="_blank">View résumé</a>
+      </div>
+      <footer><span>© <span id="year"></span> Chaitanya Aggarwal</span><a href="#top">Back to top ↑</a></footer>
     </section>
   </main>
 
+  <aside class="assistant" id="assistant" aria-label="Portfolio guide">
+    <button class="assistant-trigger" id="assistant-trigger" aria-expanded="false" aria-controls="assistant-panel" aria-label="Open Chaitanya’s portfolio guide">
+      <span class="clip-face" aria-hidden="true"><i class="clip-eye eye-left"></i><i class="clip-eye eye-right"></i><i class="clip-mouth"></i></span>
+      <span class="assistant-status">Ask me!</span>
+    </button>
+    <section class="assistant-panel" id="assistant-panel" hidden>
+      <div class="assistant-top"><div><strong>Clip</strong><span>Chaitanya’s portfolio guide</span></div><button id="assistant-close" aria-label="Close guide">×</button></div>
+      <div class="assistant-messages" id="assistant-messages" aria-live="polite">
+        <div class="clip-mini" aria-hidden="true">◉</div>
+        <p class="assistant-bubble">Hey there! Welcome to Chaitanya’s portfolio. I can give you the quick tour.</p>
+      </div>
+      <button class="speak-button" id="speak-button" type="button">🔊 Hear greeting</button>
+      <div class="quick-prompts" aria-label="Questions to ask">
+        <button data-answer="intro">Who is Chaitanya?</button>
+        <button data-answer="impact">Biggest impact?</button>
+        <button data-answer="journey">Tell me his journey</button>
+        <button data-answer="projects">Best projects?</button>
+        <button data-answer="contact">How do I contact him?</button>
+      </div>
+    </section>
+  </aside>
+
   <script src="js/app.js"></script>
-  <script type="module" src="js/scene.js"></script>
 </body>
 </html>
