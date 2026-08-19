@@ -8,8 +8,25 @@
   <meta property="og:title" content="Chaitanya Aggarwal — AI Product Manager">
   <meta property="og:description" content="Mechanical mind. Product instinct. AI ambition.">
   <title>Chaitanya Aggarwal — AI Product Manager</title>
+  <!-- DNS Prefetch for External Scripts -->
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TGH0EWDTE4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+  <script>
+    VANTA.WAVES({
+      el: "#top",
+      mouseControls: false,
+      touchControls: false,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      color: 0xf7f5ef
+    })
+  </script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -24,52 +41,44 @@
 
   <header class="site-header">
     <a class="logo" href="#top" aria-label="Chaitanya Aggarwal, home">CA<span>.</span></a>
-    <nav aria-label="Main navigation">
+    <button class="hamburger" aria-label="Open main navigation" aria-controls="mobile-nav" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav aria-label="Main navigation" id="mobile-nav" data-state="closed">
       <a href="#work">Work</a>
       <a href="#journey">Journey</a>
       <a href="#about">About</a>
     </nav>
-    <a class="header-cta" href="mailto:chaitanyaaggarwal9@gmail.com">Let’s talk <span aria-hidden="true">↗</span></a>
   </header>
 
   <main id="main">
     <section class="hero" id="top">
       <div class="hero-copy">
         <p class="kicker"><span></span> AI Product Manager · Washington, DC</p>
-        <h1>Mechanical mind.<br><em>Product instinct.</em><br>AI ambition.</h1>
-        <p class="hero-text">I’m Chaitanya. I turn complicated, messy problems into useful products people actually want—from financial systems to AI experiences.</p>
+        <h1>I build useful AI products<br><em>from complex problems.</em></h1>
+        <p class="hero-text">I’m a product builder who can lead teams to ship, whether we’re working with messy financial data or fine-tuning a new AI model.</p>
         <div class="hero-actions">
           <a class="button button-dark" href="#work">Explore my work <span aria-hidden="true">↓</span></a>
           <a class="button button-light" href="assets/Chaitanya_Aggarwal_Resume.pdf" target="_blank">View résumé <span aria-hidden="true">↗</span></a>
         </div>
         <ul class="proof" aria-label="Career highlights">
-          <li><strong>10K+</strong><span>monthly users shipped</span></li>
-          <li><strong>$1.8M</strong><span>business impact</span></li>
-          <li><strong>30+</strong><span>people led</span></li>
+          <li><strong>10K+</strong><span>monthly active users</span></li>
+          <li><strong>$1.8M</strong><span>annualized impact</span></li>
+          <li><strong>30+</strong><span>people led across teams</span></li>
         </ul>
       </div>
 
-      <div class="hero-visual" aria-label="A mechanical turbine transforming into an AI network">
-        <div class="visual-label label-build">BUILD</div>
-        <div class="visual-label label-learn">LEARN</div>
-        <div class="visual-label label-ship">SHIP</div>
+      <div class="hero-visual">
         <div class="portrait-card">
           <img src="assets/photo.jpg" alt="Chaitanya Aggarwal" width="1000" height="964">
           <div class="portrait-note">Builder at heart <span>✦</span></div>
         </div>
-        <div class="machine" aria-hidden="true">
-          <div class="orbit orbit-a"><i></i><i></i><i></i></div>
-          <div class="orbit orbit-b"><i></i><i></i></div>
-          <div class="core"><span>0→1</span></div>
-        </div>
-        <div class="spark spark-a">✦</div>
-        <div class="spark spark-b">✦</div>
       </div>
     </section>
 
-    <div class="marquee" aria-hidden="true">
-      <div>PRODUCT STRATEGY ✦ AI EXPERIENCES ✦ USER RESEARCH ✦ ZERO TO ONE ✦ PRODUCTS THAT SHIP ✦ PRODUCT STRATEGY ✦ AI EXPERIENCES ✦ USER RESEARCH ✦ ZERO TO ONE ✦ PRODUCTS THAT SHIP ✦</div>
-    </div>
+
 
     <section class="work section" id="work">
       <div class="section-intro reveal">
@@ -156,14 +165,14 @@
         <article class="milestone reveal">
           <time>2025—26</time><div class="timeline-dot"></div><div><p>THE AI DEPTH</p><h3>LLM Training & Evaluation</h3><span>Built sharper instincts for AI quality through human-data generation, evaluation, and review rubrics across multiple projects.</span></div>
         </article>
-        <article class="milestone milestone-now reveal">
+        <article class="milestone reveal milestone-now">
           <time>NOW</time><div class="timeline-dot"></div><div><p>WHAT’S NEXT</p><h3>Building useful AI products</h3><span>Looking for ambitious product teams where curiosity, user empathy, and fast execution matter.</span></div>
         </article>
       </div>
     </section>
 
     <section class="about section" id="about">
-      <div class="about-photo reveal"><img src="assets/photo.jpg" alt="Chaitanya Aggarwal smiling" width="1000" height="964"><span>Yes, I really like shipping things.</span></div>
+      <div class="about-photo reveal"><img src="assets/photo.jpg" alt="Chaitanya Aggarwal smiling" width="1000" height="964" loading="lazy"><span>Yes, I really like shipping things.</span></div>
       <div class="about-copy reveal">
         <p class="section-number">03 / A LITTLE MORE HUMAN</p>
         <h2>Curious by default.<br><em>Restless for impact.</em></h2>
@@ -178,35 +187,12 @@
       <h2>Have a hard problem?<br><em>I’m interested.</em></h2>
       <p>Open to Product Manager and Senior Product Manager opportunities in AI-first teams.</p>
       <div class="contact-links">
-        <a class="button button-dark" href="mailto:chaitanyaaggarwal9@gmail.com">Email Chaitanya <span aria-hidden="true">↗</span></a>
         <a class="button button-light" href="assets/Chaitanya_Aggarwal_Resume.pdf" target="_blank">View résumé</a>
       </div>
       <footer><span>© <span id="year"></span> Chaitanya Aggarwal</span><a href="#top">Back to top ↑</a></footer>
     </section>
   </main>
 
-  <aside class="assistant" id="assistant" aria-label="Portfolio guide">
-    <button class="assistant-trigger" id="assistant-trigger" aria-expanded="false" aria-controls="assistant-panel" aria-label="Open Chaitanya’s portfolio guide">
-      <span class="clip-face" aria-hidden="true"><i class="clip-eye eye-left"></i><i class="clip-eye eye-right"></i><i class="clip-mouth"></i></span>
-      <span class="assistant-status">Ask me!</span>
-    </button>
-    <section class="assistant-panel" id="assistant-panel" hidden>
-      <div class="assistant-top"><div><strong>Clip</strong><span>Chaitanya’s portfolio guide</span></div><button id="assistant-close" aria-label="Close guide">×</button></div>
-      <div class="assistant-messages" id="assistant-messages" aria-live="polite">
-        <div class="clip-mini" aria-hidden="true">◉</div>
-        <p class="assistant-bubble">Hey there! Welcome to Chaitanya’s portfolio. I can give you the quick tour.</p>
-      </div>
-      <button class="speak-button" id="speak-button" type="button">🔊 Hear greeting</button>
-      <div class="quick-prompts" aria-label="Questions to ask">
-        <button data-answer="intro">Who is Chaitanya?</button>
-        <button data-answer="impact">Biggest impact?</button>
-        <button data-answer="journey">Tell me his journey</button>
-        <button data-answer="projects">Best projects?</button>
-        <button data-answer="contact">How do I contact him?</button>
-      </div>
-    </section>
-  </aside>
 
-  <script src="js/app.js"></script>
 </body>
 </html>
