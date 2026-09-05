@@ -67,6 +67,57 @@
   window.addEventListener("resize", onScroll);
   updateTimelineProgress();
 
+  /* ---------- Avatar: sprite frames scrubbed by cursor position ---------- */
+  var avatarStage = document.getElementById("avatar-stage");
+  if (avatarStage) {
+    var AVATAR_FRAMES = 64;
+    var lastFrameIndex = AVATAR_FRAMES - 1;
+    var idleFrame = lastFrameIndex / 2;
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reduceMotion) {
+      avatarStage.style.setProperty("--frame", idleFrame);
+    } else {
+      var pointerFine = window.matchMedia("(pointer: fine)").matches;
+      var targetFrame = idleFrame;
+      var currentFrame = idleFrame;
+      var idlePhase = 0;
+      var mouseIsOut = !pointerFine;
+
+      if (pointerFine) {
+        window.addEventListener("pointermove", function (e) {
+          mouseIsOut = false;
+          var rect = avatarStage.getBoundingClientRect();
+          var centerX = rect.left + rect.width / 2;
+          var range = Math.max(window.innerWidth * 0.3, 240);
+          var normalized = Math.max(-1, Math.min(1, (e.clientX - centerX) / range));
+          // Sprite frame 0 has the avatar gazing toward screen-right, so a
+          // higher (rightward) normalized value must map to a *lower*
+          // frame index for the avatar to actually look toward the cursor.
+          targetFrame = ((1 - normalized) / 2) * lastFrameIndex;
+        }, { passive: true });
+
+        // Ease back to the idle pose once the cursor leaves the window,
+        // instead of leaving the avatar frozen wherever it last pointed.
+        document.addEventListener("mouseleave", function () { mouseIsOut = true; });
+      }
+
+      (function animateAvatar() {
+        if (mouseIsOut) {
+          idlePhase += 0.012;
+          targetFrame = idleFrame + (pointerFine ? 0 : Math.sin(idlePhase) * (lastFrameIndex * 0.28));
+        }
+        // Eased interpolation: chase the target instead of snapping to it,
+        // so the motion reads as smooth/premium rather than jumpy.
+        currentFrame += (targetFrame - currentFrame) * 0.08;
+        // Snap only the *painted* frame to a whole number: a fractional
+        // background-position blends two adjacent frames (a visible seam).
+        avatarStage.style.setProperty("--frame", Math.round(currentFrame));
+        window.requestAnimationFrame(animateAvatar);
+      })();
+    }
+  }
+
   /* ---------- Footer year ---------- */
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -80,9 +131,9 @@
 
   var answers = {
     experience: "7+ years spanning construction-site business analysis, B2B fintech SaaS product management, LLM evaluation for frontier AI labs, and now 0-to-1 AI product management.",
-    building: "MyEdMaster — an AI-powered virtual fitness coaching platform. I own the product strategy and I'm building the frontend alongside a custom OpenAI-integrated backend.",
-    strengths: "Turning ambiguous, 0-to-1 problems into shipped products people actually adopt — plus fluency across the full stack: PRDs, roadmaps, SQL/Python, and hands-on AI/LLM evaluation.",
-    contact: "Fastest way is email: chaitanyaaggarwal9@gmail.com — or book time directly via the Calendly link in the Contact section."
+    building: "MyEdMaster, an AI-powered virtual fitness coaching platform. I own the product strategy and I'm building the frontend alongside a custom OpenAI-integrated backend.",
+    strengths: "Turning ambiguous, 0-to-1 problems into shipped products people actually adopt, plus fluency across the full stack: PRDs, roadmaps, SQL/Python, and hands-on AI/LLM evaluation.",
+    contact: "Fastest way is email: chaitanyaaggarwal9@gmail.com, or book time directly via the Calendly link in the Contact section."
   };
 
   function openPanel() {

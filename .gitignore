@@ -1,1 +1,8 @@
 .DS_Store
+.claude/
+
+# Source assets not used by the site (superseded by the cropped/optimized
+# versions in Public/images that index.html actually references)
+Public/images/Animate_avatar_head_tracking_cursor_202609041838.mp4
+Public/images/AI-GYM.png
+Public/images/METY-SS.png
