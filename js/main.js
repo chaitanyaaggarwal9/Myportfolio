@@ -72,32 +72,53 @@
   var heroHint = document.getElementById("hero-hint");
   if (avatarStage) {
     var avatarMask = avatarStage.parentElement;
+    var layers = [document.getElementById("avatar-layer-a"), document.getElementById("avatar-layer-b")];
     var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+    // namaste/hi are motion-interpolated (ffmpeg minterpolate, optical-flow
+    // in-betweening) from the original ~25-frame sprites up to 56/55 frames
+    // at 60fps, which is what makes the pose changes read as fluid motion
+    // instead of a flipbook. Dance keeps its original 25 frames — the same
+    // interpolation introduced visible ghosting on its fast arm/leg swings,
+    // so it relies on the runtime crossfade below instead.
     var GESTURES = {
-      namaste: { src: "../Public/images/avatar-namaste.png", count: 27, ar: "80.44 / 187", bgSize: "2700% 387.17%", posY: "50.28%", fps: 30 },
-      hi:      { src: "../Public/images/avatar-Hi.png",       count: 23, ar: "94.44 / 210", bgSize: "2300% 344.76%", posY: "47.86%", fps: 30, loops: 1 },
-      dance:   { src: "../Public/images/avatar-dance-fixed.jpg", count: 25, ar: "97 / 201", bgSize: "2500% 408.46%", posY: "49.68%", fps: 30, loops: 2 }
+      namaste: { src: "../Public/images/avatar-namaste-smooth.png", count: 56, ar: "80.44 / 187", bgSize: "5600% 387.17%", posY: "50.28%", fps: 60 },
+      hi:      { src: "../Public/images/avatar-Hi-smooth.png",      count: 55, ar: "94.44 / 210", bgSize: "5500% 344.76%", posY: "47.86%", fps: 60, loops: 1 },
+      dance:   { src: "../Public/images/avatar-dance-fixed.png",    count: 25, ar: "97 / 201",     bgSize: "2500% 408.46%", posY: "49.68%", fps: 30, loops: 2 }
     };
 
     var current = null; // "namaste" | "hi" | "dance" | null (idle)
     var rafId = null;
     var lastWaveAt = 0;
     var WAVE_COOLDOWN = 4000;
+    var frontLayer = 0; // index into `layers` currently at opacity 1
 
-    function setStatic(name, frame) {
+    // Paints one frame onto whichever layer is hidden, then crossfades it to
+    // the front — this dissolves consecutive poses into each other instead
+    // of hard-cutting, which is what makes a low frame-count sprite (~25
+    // poses) read as smooth motion rather than a flipbook.
+    function paint(name, frameIndex) {
       var g = GESTURES[name];
-      avatarStage.style.setProperty("--bg-src", "url('" + g.src + "')");
-      avatarStage.style.setProperty("--count", g.count);
-      avatarStage.style.setProperty("--bg-size", g.bgSize);
-      avatarStage.style.setProperty("--pos-y", g.posY);
-      avatarStage.style.setProperty("--frame", frame);
+      var back = layers[1 - frontLayer];
+      // Match the crossfade length to this gesture's own frame duration so
+      // each dissolve finishes right as the next one begins, instead of
+      // overlapping (too fast a fade looks like a cut again; too slow and
+      // consecutive fades pile up into a blur).
+      back.style.transitionDuration = (1000 / g.fps) + "ms";
+      back.style.setProperty("--bg-src", "url('" + g.src + "')");
+      back.style.setProperty("--count", g.count);
+      back.style.setProperty("--bg-size", g.bgSize);
+      back.style.setProperty("--pos-y", g.posY);
+      back.style.setProperty("--frame", frameIndex);
+      back.classList.add("is-visible");
+      layers[frontLayer].classList.remove("is-visible");
       avatarMask.style.setProperty("--ar", g.ar);
+      frontLayer = 1 - frontLayer;
     }
 
     function goIdle() {
       current = null;
-      setStatic("hi", 0);
+      paint("hi", 0);
     }
 
     function play(name, onComplete) {
@@ -105,7 +126,7 @@
       var g = GESTURES[name];
       var loops = g.loops || 1;
       current = name;
-      setStatic(name, 0);
+      paint(name, 0);
 
       var frameDuration = 1000 / g.fps;
       var totalFrames = g.count * loops;
@@ -120,7 +141,7 @@
           if (current === name) onComplete && onComplete();
           return;
         }
-        avatarStage.style.setProperty("--frame", frameIndex % g.count);
+        paint(name, frameIndex % g.count);
         rafId = requestAnimationFrame(step);
       })(performance.now());
     }
@@ -149,6 +170,35 @@
 
     if (heroHint) {
       avatarStage.addEventListener("click", function () { heroHint.style.opacity = "0"; }, { once: true });
+    }
+
+    // Tactile 3D feel: the card tilts toward the cursor (Apple-product-page
+    // style) and dips slightly on press. Kept on a separate element from the
+    // idle float animation above, since a running CSS animation and a
+    // JS-driven inline transform fight over the same property otherwise.
+    if (!reduceMotion && window.matchMedia("(pointer: fine)").matches) {
+      var pressed = false;
+      var tiltX = 0, tiltY = 0;
+
+      function applyTilt() {
+        avatarMask.style.transform =
+          "perspective(900px) rotateX(" + tiltX + "deg) rotateY(" + tiltY + "deg) scale(" + (pressed ? 0.96 : 1) + ")";
+      }
+
+      avatarStage.addEventListener("pointermove", function (e) {
+        var rect = avatarMask.getBoundingClientRect();
+        var px = (e.clientX - rect.left) / rect.width - 0.5;
+        var py = (e.clientY - rect.top) / rect.height - 0.5;
+        var MAX_TILT = 10;
+        tiltY = px * MAX_TILT * 2;
+        tiltX = -py * MAX_TILT;
+        applyTilt();
+      });
+      avatarStage.addEventListener("pointerleave", function () {
+        tiltX = 0; tiltY = 0; applyTilt();
+      });
+      avatarStage.addEventListener("pointerdown", function () { pressed = true; applyTilt(); });
+      window.addEventListener("pointerup", function () { if (pressed) { pressed = false; applyTilt(); } });
     }
   }
 
