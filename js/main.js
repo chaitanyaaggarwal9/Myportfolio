@@ -67,89 +67,60 @@
   window.addEventListener("resize", onScroll);
   updateTimelineProgress();
 
-  /* ---------- Avatar: gesture sprites (namaste on load, wave on mousemove, dance on click) ---------- */
+  /* ---------- Avatar: real video clips (namaste on load, wave on mousemove, dance on click) ---------- */
   var avatarStage = document.getElementById("avatar-stage");
   var heroHint = document.getElementById("hero-hint");
   if (avatarStage) {
     var avatarMask = avatarStage.parentElement;
-    var layers = [document.getElementById("avatar-layer-a"), document.getElementById("avatar-layer-b")];
+    var idleVideo = document.getElementById("avatar-idle-video");
+    var gestureVideo = document.getElementById("avatar-gesture-video");
     var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    // namaste/hi are motion-interpolated (ffmpeg minterpolate, optical-flow
-    // in-betweening) from the original ~25-frame sprites up to 56/55 frames
-    // at 60fps, which is what makes the pose changes read as fluid motion
-    // instead of a flipbook. Dance keeps its original 25 frames — the same
-    // interpolation introduced visible ghosting on its fast arm/leg swings,
-    // so it relies on the runtime crossfade below instead.
+    // Real filmed/rendered clips, not sprites — Safari doesn't support WebM
+    // at all, so the <video> falls through to the mp4 automatically; we just
+    // need to know which one to hand it since these are swapped via .src
+    // (not <source> children) for a plain single load per gesture.
+    var probe = document.createElement("video");
+    var ext = probe.canPlayType('video/webm; codecs="vp9"') ? "webm" : "mp4";
+    var BASE = "../Public/video/avatar-";
+
     var GESTURES = {
-      namaste: { src: "../Public/images/avatar-namaste-smooth.png", count: 56, ar: "80.44 / 187", bgSize: "5600% 387.17%", posY: "50.28%", fps: 60 },
-      hi:      { src: "../Public/images/avatar-Hi-smooth.png",      count: 55, ar: "94.44 / 210", bgSize: "5500% 344.76%", posY: "47.86%", fps: 60, loops: 1 },
-      dance:   { src: "../Public/images/avatar-dance-fixed.png",    count: 25, ar: "97 / 201",     bgSize: "2500% 408.46%", posY: "49.68%", fps: 30, loops: 2 }
+      namaste: { src: BASE + "namaste." + ext },
+      hi:      { src: BASE + "hi." + ext },
+      dance:   { src: BASE + "dance." + ext }
     };
 
+    idleVideo.src = BASE + "idle." + ext;
+
     var current = null; // "namaste" | "hi" | "dance" | null (idle)
-    var rafId = null;
     var lastWaveAt = 0;
     var WAVE_COOLDOWN = 4000;
-    var frontLayer = 0; // index into `layers` currently at opacity 1
-
-    // Paints one frame onto whichever layer is hidden, then crossfades it to
-    // the front — this dissolves consecutive poses into each other instead
-    // of hard-cutting, which is what makes a low frame-count sprite (~25
-    // poses) read as smooth motion rather than a flipbook.
-    function paint(name, frameIndex) {
-      var g = GESTURES[name];
-      var back = layers[1 - frontLayer];
-      // Match the crossfade length to this gesture's own frame duration so
-      // each dissolve finishes right as the next one begins, instead of
-      // overlapping (too fast a fade looks like a cut again; too slow and
-      // consecutive fades pile up into a blur).
-      back.style.transitionDuration = (1000 / g.fps) + "ms";
-      back.style.setProperty("--bg-src", "url('" + g.src + "')");
-      back.style.setProperty("--count", g.count);
-      back.style.setProperty("--bg-size", g.bgSize);
-      back.style.setProperty("--pos-y", g.posY);
-      back.style.setProperty("--frame", frameIndex);
-      back.classList.add("is-visible");
-      layers[frontLayer].classList.remove("is-visible");
-      avatarMask.style.setProperty("--ar", g.ar);
-      frontLayer = 1 - frontLayer;
-    }
 
     function goIdle() {
       current = null;
-      paint("hi", 0);
+      gestureVideo.classList.remove("is-visible");
     }
 
     function play(name, onComplete) {
-      if (rafId) cancelAnimationFrame(rafId);
       var g = GESTURES[name];
-      var loops = g.loops || 1;
       current = name;
-      paint(name, 0);
+      gestureVideo.onended = null;
+      gestureVideo.src = g.src;
+      gestureVideo.currentTime = 0;
+      gestureVideo.classList.add("is-visible");
+      var playPromise = gestureVideo.play();
+      if (playPromise && playPromise.catch) playPromise.catch(function () {});
 
-      var frameDuration = 1000 / g.fps;
-      var totalFrames = g.count * loops;
-      var start = null;
-
-      (function step(ts) {
-        if (start === null) start = ts;
-        var elapsed = ts - start;
-        var frameIndex = Math.floor(elapsed / frameDuration);
-        if (frameIndex >= totalFrames) {
-          rafId = null;
-          if (current === name) onComplete && onComplete();
-          return;
-        }
-        paint(name, frameIndex % g.count);
-        rafId = requestAnimationFrame(step);
-      })(performance.now());
+      gestureVideo.onended = function () {
+        gestureVideo.classList.remove("is-visible");
+        if (current === name) onComplete && onComplete();
+      };
     }
 
     if (reduceMotion) {
       // Respect reduced-motion for the ambient greeting/wave loop, but a
       // click is a deliberate user action, so dance is still allowed.
-      goIdle();
+      idleVideo.pause();
       avatarStage.addEventListener("click", function () { play("dance", goIdle); });
     } else {
       play("namaste", goIdle);
