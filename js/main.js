@@ -82,7 +82,7 @@
     // (not <source> children) for a plain single load per gesture.
     var probe = document.createElement("video");
     var ext = probe.canPlayType('video/webm; codecs="vp9"') ? "webm" : "mp4";
-    var BASE = "../Public/video/avatar-";
+    var BASE = "Public/video/avatar-";
 
     var GESTURES = {
       namaste: { src: BASE + "namaste." + ext },
@@ -99,11 +99,16 @@
     function goIdle() {
       current = null;
       gestureVideo.classList.remove("is-visible");
+      idleVideo.classList.add("is-visible");
     }
 
     function play(name, onComplete) {
       var g = GESTURES[name];
       current = name;
+      // The gesture clip has its own transparent background too, so idle
+      // must actually hide (not just sit "underneath") or it shows through
+      // the gesture's transparent margins as a ghost double-exposure.
+      idleVideo.classList.remove("is-visible");
       gestureVideo.onended = null;
       gestureVideo.src = g.src;
       gestureVideo.currentTime = 0;
